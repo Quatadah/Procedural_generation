@@ -1,0 +1,51 @@
+{
+    "width": 320,
+    "height": 240,
+    "composition": {
+        "type": "filter",
+        "name": "translate",
+        "args": [-40, 0],
+        "images": [
+            {
+                "type": "filter",
+                "name": "hyperbolic",
+                "args": [120, 120],
+                "images": [
+                    {
+                        "type": "filter",
+                        "name": "convolution",
+                        "args": [
+                            [
+                                [1,1,1],
+                                [1,1,1],
+                                [1,1,1]
+                            ]
+                        ],
+                        "images": [
+                            {
+                                "type": "generator",
+                                "name": "truncatedSquareStar",
+                                "args": [
+                                    100,
+                                    150,
+                                    {"r": 200, "g": 200, "b": 255, "a": 255},
+                                    {"r": 0, "g": 0, "b": 0, "a": 255},
+                                    {"r": 255, "g": 255, "b": 255, "a": 255},
+                                    {"r": 230, "g": 200, "b": 225, "a": 255},
+                                    {"r": 255, "g": 255, "b": 200, "a": 255},
+                                    {"r": 200, "g": 225, "b": 255, "a": 255}
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "generator",
+                        "name": "perlin",
+                        "args": [5, 0.4,4]
+                    }
+                ]
+            }
+        ]
+    }
+}
+

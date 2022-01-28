@@ -1,0 +1,10 @@
+{
+    "width": 1000,
+    "height": 1000,
+    "composition": 
+    {
+        "type": "generator",
+        "name": "starLineDouble",
+        "args": [10, 4, 2, 0.1, 100, 100, { "r": 230, "g": 200, "b": 225, "a": 255 }]
+    }
+}

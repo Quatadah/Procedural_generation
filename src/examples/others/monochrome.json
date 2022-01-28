@@ -1,0 +1,10 @@
+{
+    "width": 1000,
+    "height": 1000,
+    "composition": 
+    {
+        "type": "generator",
+        "name": "monochrome",
+        "args": [{"r": 21, "g": 120, "b":211, "a":255 }]
+        }
+}

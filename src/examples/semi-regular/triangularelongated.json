@@ -1,0 +1,14 @@
+{
+    "width": 1000,
+    "height": 1000,
+    "composition": 
+    {
+        "type": "generator",
+        "name": "triangularElongatedBoard",
+        "args": [100, 100, {"r": 255, "g": 255, "b": 0, "a": 255}, 
+            { "r": 230, "g": 200, "b": 225, "a": 255 },
+            { "r": 255, "g": 255, "b": 200, "a": 255 },
+            { "r": 200, "g": 225, "b": 255, "a": 255 }
+        ]
+    }
+}

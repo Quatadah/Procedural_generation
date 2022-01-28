@@ -1,0 +1,11 @@
+{
+    "width": 1000,
+    "height": 1000,
+    "composition": 
+    {
+        "type": "generator",
+        "name": "random",
+        "args": []
+    
+    }
+}

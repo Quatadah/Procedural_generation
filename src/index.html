@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Canvas showcase.</title>
+    <style>
+        html,
+        body {
+            background: #161618;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        #res_div {
+            display: block;
+            text-align: center;
+            margin: 5vh 0;
+        }
+
+        #src_div {
+            background: #212121;
+            padding: 1vw;
+            border-right: solid gray;
+            text-align: left;
+            grid-column: 1;
+            height: 100%;
+        }
+
+        #json_code {
+            color: white;
+            width: 100%;
+            height: 70vh;
+            resize: none;
+        }
+
+        #drawing_board {
+            width: 40vw;
+            height: 40vw;
+            border: solid 0.25em gray;
+        }
+
+        #json_code,
+        #pavages {
+            background: #404040;
+            color: white;
+        }
+
+        #txt {
+            color: white;
+        }
+
+        #header {
+            background: #404040;
+            box-sizing: border-box;
+            display: grid;
+            grid-auto-flow: row;
+            grid-template-columns: repeat(8, 1fr);
+            border-bottom: solid gray;
+        }
+
+        #logo {
+            grid-column: 1;
+            width: 100%;
+            margin: 0 0.5vw;
+        }
+
+        #wrapper {
+            box-sizing: border-box;
+            display: grid;
+            grid-auto-flow: row;
+            grid-template-columns: repeat(3, 1fr);
+            margin: 0;
+        }
+
+        #res_wrapper {
+            grid-column: 2 / -1;
+        }
+
+        #title {
+            text-align: center;
+            grid-column: 4 / 6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            margin: auto;
+            color: white;
+        }
+
+        #button_cont {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <img id="logo" src="enseirb-footer.png">
+        <div id="title">
+            <h1>Génération Procédurale</h1>
+        </div>
+    </div>
+    <div id="wrapper">
+        <div id="src_div">
+            <div id="src_content">
+                <div>
+                    <label id="txt">Exemples :</label>
+
+                    <select id="pavages" id="pav-select">
+                        <optgroup label="Polygonal">
+                            <optgroup label="Regular">
+                                <option value="checkerboard">Checker board</option>
+                                <option value="hexagonal">Hexagonal</option>
+                                <option value="triangular">Triangular</option>
+                            </optgroup>
+                            <optgroup label="Semi-regular">
+                                <option value="hexagonalsoftened">Softened hexagone</option>
+                                <option value="squaresoftened">Softened square</option>
+                                <option value="triangularelongated">Elongated triangular</option>
+                                <option value="trihexagonal">Trihexagonal</option>
+                                <option value="truncatedhexagone">Truncated hexagone</option>
+                                <option value="truncatedsquare">Truncated square</option>
+                            </optgroup>
+                            <optgroup label="Starlike">
+                                <option value="starlinesimple">Simple starline</option>
+                                <option value="starlinedouble">Double starline</option>
+                                <option value="starlineborder">Border starline</option>
+                                <option value="starlinefilledsimple">Filled starline simple</option>
+                                <option value="starlinefilleddouble">Filled starline double</option>
+                                <option value="starlinefilledborder">Filled starline border</option>
+                                <option value="truncatedsquarestar">Truncated square star</option>
+                            </optgroup>
+                        </optgroup>
+                        
+                        <optgroup label="Distance">
+                            <optgroup label="Voronoi">
+                                <option value="manhattanVoronoi">Voronoi : manhattan distance</option>
+                                <option value="euclidianVoronoi">Voronoi : euclidian distance</option>
+                            </optgroup>
+                            <optgroup label="Signed distance">
+                                <option value="circular">Circular</option>
+                                <option value="hexagonale">Hexagonal</option>
+                            </optgroup>
+
+                        <optgroup label="Filters">
+                            <optgroup label="Compositions">
+                                <option value="addingfilter">Addition </option>
+                                <option value="multiplyingfilter">Multiplication </option>
+                                <option value="scalarmultiplyingfilter">Scalar multiplication </option>
+                                <option value="dividingfilter">Division</option>
+                            </optgroup>
+                            <optgroup label="Transformations">
+                                <option value="translation">Translation</option>
+                                <option value="symetryX">X-Symetry</option>
+                                <option value="symetryY">Y-Symetry</option>
+                                <option value="rotate">Rotation</option>
+                                <option value="hyperbolic">Hyperbolic</option>
+                            </optgroup>
+                            <optgroup label=Convolution>
+                                <option value="convolution">Convolution</option>
+                            </optgroup>
+                        </optgroup>
+                        <optgroup label="Noise">
+                            <option value="random">White noise</option>
+                            <option value="perlin">Perlin's noise</option>
+                        </optgroup>
+                        <optgroup label="Other types of generators">
+                            <option value="monochrome">Monochrome</option>
+                        </optgroup>
+                        <optgroup label ="Other types of filters">
+                            <option value="contrast">Contrast</option>
+                            <option value="blur">Blur</option>
+                        </optgroup>
+                        
+                    </select>
+                    <button id="load_example">
+                        Charger
+                    </button>
+                </div>
+                <div>
+                    <textarea id="json_code" rows="5" cols="33">Json</textarea>
+                </div>
+                <div id="button_cont">
+                    <button id="read_json">
+                        Charger
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="res_wrapper">
+            <div id="res_div">
+                <div id="res_lab">
+                    <label id="txt">Résultat :</label>
+                </div>
+                <div id="res_can">
+                    <canvas id="drawing_board"> Error while loading canvas. </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="html.js"></script>
+</body>
+
+</html>

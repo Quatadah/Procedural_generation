@@ -1,0 +1,17 @@
+{
+    "width": 1000,
+    "height": 1000,
+    "composition": 
+    {
+        "type": "filter",
+        "name": "multiply_scalar",
+        "args": [0.5],
+        "images": [
+            {
+                "type": "generator",
+                "name": "voronoi",
+                "args": [1, 75, "manhattan"]
+            }
+        ]
+    }
+}
